@@ -34,6 +34,17 @@ export type LiveLessonRequestEntity = {
   status: 'requested' | 'assigned' | 'completed' | 'cancelled';
 };
 
+export type PaymentEntity = {
+  id: string;
+  userId: string;
+  courseId: string;
+  status: 'pending' | 'succeeded' | 'failed';
+  provider: 'sim' | 'stripe' | 'iyzico' | 'paytr';
+  paymentRef: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export const db = {
   users: <UserEntity[]>[
     { id: 'u1', email: 'user@test.com', password: '123456', role: 'user', fullName: 'Test User' },
@@ -58,5 +69,6 @@ export const db = {
     },
   ],
   purchases: <PurchaseEntity[]>[],
+  payments: <PaymentEntity[]>[],
   liveLessonRequests: <LiveLessonRequestEntity[]>[],
 };
